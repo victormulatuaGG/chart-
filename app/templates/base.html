@@ -1,0 +1,29 @@
+<html>
+	{% if playing %}
+		<meta http-equiv="refresh" content="15">
+	{% else %}
+	{% endif %}
+		<head>
+			<title>{{ title }}</title>
+			<link rel="stylesheet" href="{{ url_for("static", filename="css/base.css") }}"/>
+		</head>
+		<body>
+			<div class="body_container">
+				<div class="iframe_container">
+					<iframe width="1868" height="1000" seamless frameborder="0" scrolling="no" src="{{ iframe }}"></iframe>
+				</div>
+				<div class="controls_container">
+					<form action="" method="post" novalidate>
+						{{ form.hidden_tag() }}
+						{% if playing %}
+						<p>{{ form.pause(class_="pause") }}</p>
+						{% else %}
+						<p>{{ form.play(class_="play") }}</p>
+						<p>{{ form.next(class_="next") }}</p>
+						<p>{{ form.previous(class_="previous") }}</p>
+						{% endif %}
+					</form>
+				</div>
+			</div>
+		</body>
+</html>
